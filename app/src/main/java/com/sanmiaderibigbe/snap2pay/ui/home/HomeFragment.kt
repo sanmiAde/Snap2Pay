@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -42,6 +44,11 @@ class HomeFragment : Fragment() {
 
             }
         })
+
+        txt_test.setOnClickListener {
+            val firebase = FirebaseAuth.getInstance()
+            firebase.signOut()
+        }
 
     }
 }

@@ -8,4 +8,13 @@
     <string name="pay">2Pay</string>
     <string name="slogan">Receive Payments Faster Than Ever</string>
     <string name="snap2">Snap2Pay</string>
+    <string name="OR">OR</string>
+    <string name="LOGIN">login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="reg">Register</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="invalid_email">This email is invalid</string>
+    <string name="invalid_password">password should not be less than 8</string>
 </resources>

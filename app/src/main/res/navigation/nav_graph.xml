@@ -7,7 +7,10 @@
     <fragment android:id="@+id/homeFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.home.HomeFragment"
               android:label="HOME" tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_homeFragment_to_unauthenticatedFragment"
-                app:destination="@id/unauthenticatedFragment"/>
+                app:destination="@id/unauthenticatedFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" app:popUpToInclusive="true"
+                app:popUpTo="@+id/homeFragment"/>
     </fragment>
     <fragment android:id="@+id/loginFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.login.LoginFragment"
               android:label="LOGIN" tools:layout="@layout/fragment_login">
