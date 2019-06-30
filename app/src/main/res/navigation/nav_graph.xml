@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.home.HomeFragment"
+              android:label="HOME" tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_homeFragment_to_unauthenticatedFragment"
+                app:destination="@id/unauthenticatedFragment"/>
+    </fragment>
+    <fragment android:id="@+id/loginFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.login.LoginFragment"
+              android:label="LOGIN" tools:layout="@layout/fragment_login">
+        <action android:id="@+id/action_loginFragment_to_registrationPersonalFragment"
+                app:destination="@id/navigation"/>
+    </fragment>
+    <fragment android:id="@+id/unauthenticatedFragment"
+              android:name="com.sanmiaderibigbe.snap2pay.ui.unauthenticate.UnauthenticatedFragment"
+              android:label="UNAUNTHENTICATED" tools:layout="@layout/fragment_unauthenticated">
+        <action android:id="@+id/action_unauthenticatedFragment_to_loginFragment" app:destination="@id/loginFragment"/>
+        <action android:id="@+id/action_unauthenticatedFragment_to_registrationPersonalFragment"
+                app:destination="@id/navigation"/>
+    </fragment>
+    <navigation android:id="@+id/navigation" app:startDestination="@id/registrationPersonalFragment">
+        <fragment android:id="@+id/registrationPersonalFragment"
+                  android:name="com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalFragment"
+                  android:label="PERSONAL DETAILS" tools:layout="@layout/fragment_registration_personal"/>
+        <fragment android:id="@+id/registrationbankFragment"
+                  android:name="com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationbankFragment"
+                  android:label="BANK DETAILS" tools:layout="@layout/fragment_registrationbank"/>
+    </navigation>
+</navigation>

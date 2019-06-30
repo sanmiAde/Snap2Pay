@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Snap 2 Pay</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="pay">2Pay</string>
+    <string name="slogan">Receive Payments Faster Than Ever</string>
+    <string name="snap2">Snap2Pay</string>
 </resources>
