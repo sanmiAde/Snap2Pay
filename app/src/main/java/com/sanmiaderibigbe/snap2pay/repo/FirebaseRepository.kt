@@ -7,6 +7,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.sanmiaderibigbe.snap2pay.model.User
 import durdinapps.rxfirebase2.RxFirebaseAuth
 import durdinapps.rxfirebase2.RxFirebaseDatabase
+import durdinapps.rxfirebase2.RxFirebaseUser
 import io.reactivex.Completable
 import io.reactivex.Maybe
 
@@ -36,6 +37,11 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
 
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
+    }
+
+
+    fun sendEmailVerification(): Completable {
+        return RxFirebaseUser.sendEmailVerification(getCurrentUser()!!)
     }
 
     fun signOut() {

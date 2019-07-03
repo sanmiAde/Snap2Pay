@@ -17,4 +17,6 @@
     <string name="password">password</string>
     <string name="invalid_email">This email is invalid</string>
     <string name="invalid_password">password should not be less than 8</string>
+    <string name="continue_to">CONTINUE</string>
+    <string name="reg_with_google">Register With Google</string>
 </resources>

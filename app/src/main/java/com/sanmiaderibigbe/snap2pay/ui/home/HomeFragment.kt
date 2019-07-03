@@ -46,8 +46,7 @@ class HomeFragment : Fragment() {
         })
 
         txt_test.setOnClickListener {
-            val firebase = FirebaseAuth.getInstance()
-            firebase.signOut()
+            viewModel.signout()
         }
 
     }

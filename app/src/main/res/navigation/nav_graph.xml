@@ -27,9 +27,21 @@
     <navigation android:id="@+id/navigation" app:startDestination="@id/registrationPersonalFragment">
         <fragment android:id="@+id/registrationPersonalFragment"
                   android:name="com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalFragment"
-                  android:label="PERSONAL DETAILS" tools:layout="@layout/fragment_registration_personal"/>
+                  android:label="PERSONAL DETAILS" tools:layout="@layout/fragment_registration_personal">
+            <action android:id="@+id/action_registrationPersonalFragment_to_registrationbankFragment"
+                    app:destination="@id/registrationbankFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                    app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                    app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        </fragment>
         <fragment android:id="@+id/registrationbankFragment"
                   android:name="com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationbankFragment"
-                  android:label="BANK DETAILS" tools:layout="@layout/fragment_registrationbank"/>
+                  android:label="BANK DETAILS" tools:layout="@layout/fragment_registrationbank">
+            <argument android:name="user" app:argType="com.sanmiaderibigbe.snap2pay.model.User"/>
+            <argument android:name="password" app:argType="string"/>
+        </fragment>
+        <action android:id="@+id/action_global_registrationbankFragment" app:destination="@id/registrationbankFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popUpTo="@id/homeFragment" app:popUpToInclusive="true"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </navigation>
 </navigation>

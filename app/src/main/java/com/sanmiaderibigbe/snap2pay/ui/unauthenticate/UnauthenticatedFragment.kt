@@ -38,5 +38,9 @@ class UnauthenticatedFragment : Fragment() {
         btn_login.setOnClickListener {
             navController.navigate(UnauthenticatedFragmentDirections.actionUnauthenticatedFragmentToLoginFragment())
         }
+
+        btn_register.setOnClickListener {
+            navController.navigate(UnauthenticatedFragmentDirections.actionUnauthenticatedFragmentToRegistrationPersonalFragment())
+        }
     }
 }
