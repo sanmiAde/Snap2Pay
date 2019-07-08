@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/transactionFragment" android:title="transaction"/>
+    <item android:title="home" android:id="@+id/homeFragment"/>
+    <item android:title="Settings" android:id="@+id/menu_setting_screen"/>
+</menu>

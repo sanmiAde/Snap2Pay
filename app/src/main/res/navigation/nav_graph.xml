@@ -11,6 +11,7 @@
                 app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim" app:popUpToInclusive="true"
                 app:popUpTo="@+id/homeFragment"/>
+        <action android:id="@+id/action_homeFragment_to_transactionFragment" app:destination="@id/transactionFragment"/>
     </fragment>
     <fragment android:id="@+id/loginFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.login.LoginFragment"
               android:label="LOGIN" tools:layout="@layout/fragment_login">
@@ -44,4 +45,7 @@
                 app:popUpTo="@id/homeFragment" app:popUpToInclusive="true"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </navigation>
+    <fragment android:id="@+id/transactionFragment"
+              android:name="com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionFragment"
+              android:label="transaction" tools:layout="@layout/fragment_transaction"/>
 </navigation>

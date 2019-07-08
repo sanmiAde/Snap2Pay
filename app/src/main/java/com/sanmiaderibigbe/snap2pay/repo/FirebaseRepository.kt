@@ -39,6 +39,11 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         return firebaseAuth.currentUser
     }
 
+    fun isEmailVerified(): Boolean? {
+        getCurrentUser()?.reload()
+        return getCurrentUser()?.isEmailVerified
+
+    }
 
     fun sendEmailVerification(): Completable {
         return RxFirebaseUser.sendEmailVerification(getCurrentUser()!!)
@@ -47,6 +52,7 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
     fun signOut() {
         firebaseAuth.signOut()
     }
+
 
     companion object {
         private const val USER_PATH = "users"

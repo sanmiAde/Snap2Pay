@@ -92,14 +92,14 @@ class RegistrationPersonalFragment : Fragment() {
             isFullNameValid -> {
                 fullName.error = null
             }
-            else -> fullName.error = "Name can not be empty."
+            else -> fullName.error = getString(R.string.name_error)
         }
 
         when {
             isEmailValid -> {
                 email.error = null
             }
-            else -> email.error = "Email is not valid."
+            else -> email.error = getString(R.string.email_error)
 
         }
 
@@ -107,14 +107,15 @@ class RegistrationPersonalFragment : Fragment() {
             isPhoneNumberValid -> {
                 phoneNumber.error = null
             }
-            else -> phoneNumber.error = "Phone number is not valid."
+            else -> phoneNumber.error = getString(R.string.phone_number_error)
+
         }
 
         when {
             isPasswordValid -> {
                 password.error = null
             }
-            else -> password.error = "Password is not valid"
+            else -> password.error = getString(R.string.password_error)
         }
 
         when {
@@ -126,12 +127,12 @@ class RegistrationPersonalFragment : Fragment() {
                         verifyPassword.error = null
                     }
                     else -> {
-                        verifyPassword.error = "Password is not the same."
+                        verifyPassword.error = getString(R.string.password_not_the_same_error)
                     }
                 }
             }
             else -> {
-                verifyPassword.error = "Password is not valid"
+                verifyPassword.error = getString(R.string.password_error)
             }
         }
 

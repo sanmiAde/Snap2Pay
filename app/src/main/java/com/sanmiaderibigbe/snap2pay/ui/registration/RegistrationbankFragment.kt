@@ -2,24 +2,22 @@ package com.sanmiaderibigbe.snap2pay.ui.registration
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sanmiaderibigbe.snap2pay.R
-import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
-import kotlinx.android.synthetic.main.fragment_registrationbank.*
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputLayout
-import com.sanmiaderibigbe.snap2pay.model.User
+import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.repo.Status
-import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
+import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
 import com.sanmiaderibigbe.snap2pay.ui.utils.*
+import kotlinx.android.synthetic.main.fragment_registrationbank.*
 import org.koin.android.ext.android.inject
 
 
@@ -59,7 +57,7 @@ class RegistrationbankFragment : Fragment() {
 
             when {
                 validatonResult -> {
-                    //TODO pass user via navigation components. it not worth the cost.
+
                     val updatedUser = args.user.copy(nameOnAccount = accountName.getString(), accountNumber = accountNumber.getString(), bvn = bvn.getString(), accountType = spinner.selectedItem.toString())
 
                     viewModel.registerUser(updatedUser, args.password)
@@ -73,7 +71,8 @@ class RegistrationbankFragment : Fragment() {
                                         Toast.makeText(activity, "${it.message}", Toast.LENGTH_SHORT).show()
                                     }
                                 }
-                                Status.LOADED -> TODO()
+                                Status.LOADED -> {
+                                }
                                 Status.SUCCESS -> {
                                     if (it.data == true) {
                                         navController.navigate(R.id.homeFragment)
@@ -89,20 +88,6 @@ class RegistrationbankFragment : Fragment() {
     }
 
     private fun initSpinner(): Spinner {
-        //        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-//
-//                Toast.makeText(
-//                    activity,
-//                    "Selected : " + BankaccountSpinnerAdapter.accountType.get(position),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>) {
-//
-//            }
-//        }
 
         return BankaccountSpinnerAdapter.initAdapter(context!!, spinner_account_type)
     }
@@ -119,14 +104,14 @@ class RegistrationbankFragment : Fragment() {
         val isBVNvalid = isBVNNumberValid(BVN.getData())
         val isBankAccount = isTextNotBlank(bankAccount.getData())
 
-//TODO extract text to string resources.
+
 
         when {
             isNameValid -> {
                 nameOnAccount.error = null
             }
             else -> {
-                nameOnAccount.error = "Name can not be empty"
+                nameOnAccount.error = getString(R.string.name_error)
             }
         }
 
@@ -135,16 +120,15 @@ class RegistrationbankFragment : Fragment() {
                 accountNumber.error = null
             }
             else -> {
-                accountNumber.error = "Account number is invalid"
+                accountNumber.error = getString(R.string.account_number_error)
             }
         }
 
         when {
             isBVNvalid -> {
-                BVN.error = null
             }
             else -> {
-                BVN.error = "BVN is invalid"
+                BVN.error = getString(R.string.bvn_error)
             }
         }
 
@@ -153,7 +137,7 @@ class RegistrationbankFragment : Fragment() {
                 bankAccount.error = null
             }
             else -> {
-                bankAccount.error = "Bank account is invalid"
+                bankAccount.error = getString(R.string.bank_account_error)
             }
         }
 

@@ -19,4 +19,17 @@
     <string name="invalid_password">password should not be less than 8</string>
     <string name="continue_to">CONTINUE</string>
     <string name="reg_with_google">Register With Google</string>
+    <string name="tap">Tap camera icon to scan card.</string>
+    <string name="verification_error">Email has not being verified. Check your email box to verify account.</string>
+    <string name="image_provider">com.sanmiaderibigbe.snap2pay.android.fileprovider</string>
+    <string name="text_extraction_error">Error card number could not be extracted. Try again.</string>
+    <string name="camera_permision_error">Camera permission is needed to scan card.</string>
+    <string name="name_error">Name can not be empty</string>
+    <string name="account_number_error">Account number is invalid</string>
+    <string name="bvn_error">BVN is invalid</string>
+    <string name="bank_account_error">Bank account is invalid</string>
+    <string name="email_error">Email is not valid.</string>
+    <string name="phone_number_error">Phone number is not valid.</string>
+    <string name="password_error">Password is not valid</string>
+    <string name="password_not_the_same_error">Password is not the same.</string>
 </resources>

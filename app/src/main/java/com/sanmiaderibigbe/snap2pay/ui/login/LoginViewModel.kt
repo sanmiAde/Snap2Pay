@@ -57,5 +57,9 @@ class LoginViewModel(private val firebaseRepository: FirebaseRepository) : ViewM
         loginResource.value = Resource.loaded(AuthenticationState.UNAUTHENTICATED)
     }
 
+    fun isEmailVerified(): Boolean? {
+        return firebaseRepository.isEmailVerified()
+    }
+
 
 }
