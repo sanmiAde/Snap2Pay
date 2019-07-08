@@ -100,4 +100,8 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
         return textRecognitionResource
     }
 
+    fun cleanUpImage(fileName: String) {
+        textRecognitionRepository.deleteImage(fileName)
+    }
+
 }

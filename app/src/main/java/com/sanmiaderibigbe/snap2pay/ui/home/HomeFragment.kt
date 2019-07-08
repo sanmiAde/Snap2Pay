@@ -33,6 +33,7 @@ import java.io.IOException
 class HomeFragment : Fragment() {
 
     private lateinit var imagePath: String
+    private lateinit var fileName: String
     private val loginViewModel by viewModel<LoginViewModel>()
     private val viewModel by viewModel<HomeViewModel>()
 
@@ -121,6 +122,7 @@ class HomeFragment : Fragment() {
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val atmCardImage = viewModel.getRotatedBitmap(imagePath)
+            viewModel.cleanUpImage(fileName)
 
             if (atmCardImage != null) {
                 ic_card_camera.setImageBitmap(atmCardImage)
@@ -143,7 +145,10 @@ class HomeFragment : Fragment() {
                     }
                 })
             }
+
+
         }
+
     }
 
     private fun getAuthenticationState(navController: NavController) {
@@ -175,6 +180,7 @@ class HomeFragment : Fragment() {
                 try {
                     file = viewModel.createImageFile()
                     imagePath = file?.absolutePath!!
+                    fileName = file?.nameWithoutExtension
                 } catch (ex: IOException) {
                     Toast.makeText(activity, "${ex.message}", Toast.LENGTH_SHORT).show()
                 }

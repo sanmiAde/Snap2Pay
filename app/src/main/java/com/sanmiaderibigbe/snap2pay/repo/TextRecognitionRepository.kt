@@ -17,6 +17,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class TextRecognitionRepository(
     private val application: Application, private val visionImage: VisionImage,
     private val detector: FirebaseVisionTextRecognizer
@@ -81,5 +82,15 @@ class TextRecognitionRepository(
 
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
+
+    fun deleteImage(fileName: String) {
+        val dir = application.getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.canonicalPath
+        val file = File("$dir/$fileName")
+        file.delete()
+
+        val a = 5
+    }
+
+
 
 }
