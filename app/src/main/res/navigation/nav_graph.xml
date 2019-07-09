@@ -47,5 +47,7 @@
     </navigation>
     <fragment android:id="@+id/transactionFragment"
               android:name="com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionFragment"
-              android:label="transaction" tools:layout="@layout/fragment_transaction"/>
+              android:label="transaction" tools:layout="@layout/fragment_transaction">
+        <argument android:name="atmCardNumber" app:argType="string" android:defaultValue='""'/>
+    </fragment>
 </navigation>

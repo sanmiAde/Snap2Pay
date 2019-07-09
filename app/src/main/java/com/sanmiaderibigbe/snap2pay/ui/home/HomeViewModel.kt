@@ -85,7 +85,7 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
 
         }
 
-
+        //TODO fix bug. Text recognition extract not atm  picturs and shows to the screen
         if (atmCardNumber.isNullOrEmpty()) {
             textRecognitionResource.value =
                 Resource.error(app.getString(R.string.text_extraction_error), atmCardNumber)

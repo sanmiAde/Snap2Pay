@@ -131,6 +131,11 @@ class HomeFragment : Fragment() {
                     when (it.status) {
                         Status.SUCCESS -> {
                             Toast.makeText(activity, "${it.data}", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(
+                                HomeFragmentDirections
+                                    .actionHomeFragmentToTransactionFragment()
+                                    .setAtmCardNumber(it.data!!)
+                            )
                         }
                         Status.LOADING -> {
                         }
