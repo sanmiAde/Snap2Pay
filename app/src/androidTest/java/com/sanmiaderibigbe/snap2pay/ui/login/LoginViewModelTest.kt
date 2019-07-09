@@ -21,7 +21,7 @@ class LoginViewModelTest : KoinTest {
     @Test
     fun signIn_userCredentials_authenticated() {
         viewModel.signout()
-        viewModel.signIn("arabmoney@yourmoneyismymoney.com", "oilblock")
+        viewModel.signIn("user@test.com", "12345678")
 
         viewModel.getLoginResource()
             .test()
@@ -40,7 +40,7 @@ class LoginViewModelTest : KoinTest {
     fun signIn_userCredentials_unauthenticated() {
 
         viewModel.signout()
-        viewModel.signIn("arabmoney@yourmoneyismymoney.com", "oilblock1")
+        viewModel.signIn("arabmoney2@test.com", "123456789")
 
         viewModel.getLoginResource()
             .test()
