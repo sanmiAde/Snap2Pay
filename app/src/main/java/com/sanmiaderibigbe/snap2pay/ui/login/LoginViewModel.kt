@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.AuthResult
+import com.sanmiaderibigbe.snap2pay.api.Resource
 import com.sanmiaderibigbe.snap2pay.repo.FirebaseRepository
-import com.sanmiaderibigbe.snap2pay.repo.Resource
 import io.reactivex.rxkotlin.subscribeBy
 
 class LoginViewModel(private val firebaseRepository: FirebaseRepository) : ViewModel() {

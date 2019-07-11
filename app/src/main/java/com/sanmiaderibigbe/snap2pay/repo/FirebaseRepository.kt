@@ -49,6 +49,13 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         return RxFirebaseUser.sendEmailVerification(getCurrentUser()!!)
     }
 
+    fun getUserData(): Maybe<User> {
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            firebaseDatabase.getReference(USER_PATH).child(getCurrentUser()?.uid!!),
+            User::class.java
+        )
+    }
+
     fun signOut() {
         firebaseAuth.signOut()
     }

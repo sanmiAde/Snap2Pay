@@ -1,4 +1,5 @@
-package com.sanmiaderibigbe.snap2pay.repo
+package com.sanmiaderibigbe.snap2pay.api
+
 class Resource<T>(val status: Status, val data: T?, val message: String?) {
 
 
@@ -10,7 +11,7 @@ class Resource<T>(val status: Status, val data: T?, val message: String?) {
                 message = null
             )
 
-        fun <T> error(message: String?, data: T): Resource<T> =
+        fun <T> error(message: String?, data: T?): Resource<T> =
             Resource(
                 Status.ERROR,
                 data,
@@ -24,11 +25,12 @@ class Resource<T>(val status: Status, val data: T?, val message: String?) {
                 message = null
             )
 
-        fun <T> loaded(data : T) : Resource< T> = Resource(
-            Status.LOADED,
-            data,
-            message = null
-        )
+        fun <T> loaded(data: T): Resource<T> =
+            Resource(
+                Status.LOADED,
+                data,
+                message = null
+            )
     }
 
 }

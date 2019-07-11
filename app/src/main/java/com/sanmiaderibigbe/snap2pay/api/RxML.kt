@@ -1,4 +1,4 @@
-package com.sanmiaderibigbe.snap2pay.repo
+package com.sanmiaderibigbe.snap2pay.api
 
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.text.FirebaseVisionText

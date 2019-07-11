@@ -32,4 +32,11 @@
     <string name="phone_number_error">Phone number is not valid.</string>
     <string name="password_error">Password is not valid</string>
     <string name="password_not_the_same_error">Password is not the same.</string>
+    <string name="amount_error">Amount is not valid</string>
+    <string name="product_description_error">Production description is not valid</string>
+    <string name="pin_error">Pin is not valid</string>
+    <string name="ccv_error">CCV not valid</string>
+    <string name="date_error">Date not valid</string>
+    <string name="month_error">Month not valid</string>
+    <string name="card_number_error">Card number is not valid.</string>
 </resources>

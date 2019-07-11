@@ -16,6 +16,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
     android:name=".Application">
+
+        <meta-data
+                android:name="co.paystack.android.PublicKey"
+                android:value="pk_test_1f93a949f711469703597378c0f446730a505dbd"/>
+
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

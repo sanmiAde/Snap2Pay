@@ -2,6 +2,7 @@ package com.sanmiaderibigbe.snap2pay
 
 
 import android.app.Application
+import co.paystack.android.PaystackSdk
 import com.sanmiaderibigbe.snap2pay.di.appModule
 
 import org.koin.android.ext.koin.androidContext
@@ -17,5 +18,7 @@ class Application : Application(){
             androidContext(this@Application)
             modules(appModule)
         }
+
+        PaystackSdk.initialize(applicationContext)
     }
 }

@@ -11,6 +11,8 @@ import androidx.exifinterface.media.ExifInterface
 import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer
 import com.sanmiaderibigbe.snap2pay.R
+import com.sanmiaderibigbe.snap2pay.api.RxML
+import com.sanmiaderibigbe.snap2pay.api.VisionImage
 import io.reactivex.Maybe
 import java.io.File
 import java.io.IOException

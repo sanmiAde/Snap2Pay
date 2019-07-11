@@ -1,4 +1,4 @@
-package com.sanmiaderibigbe.snap2pay.repo
+package com.sanmiaderibigbe.snap2pay.api
 
 import android.app.Activity
 import android.content.Context

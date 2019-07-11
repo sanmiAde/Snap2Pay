@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.sanmiaderibigbe.snap2pay.R
-import com.sanmiaderibigbe.snap2pay.repo.Resource
+import com.sanmiaderibigbe.snap2pay.api.Resource
 import com.sanmiaderibigbe.snap2pay.repo.TextRecognitionRepository
 import io.reactivex.rxkotlin.subscribeBy
 import java.io.File
@@ -103,5 +103,6 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
     fun cleanUpImage(fileName: String) {
         textRecognitionRepository.deleteImage(fileName)
     }
+
 
 }

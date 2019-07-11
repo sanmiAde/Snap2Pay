@@ -2,17 +2,17 @@ package com.sanmiaderibigbe.snap2pay.ui.login
 
 import android.os.Bundle
 import android.text.Editable
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.sanmiaderibigbe.snap2pay.R
-import com.sanmiaderibigbe.snap2pay.repo.Status
+import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.utils.isEmailValid
 import com.sanmiaderibigbe.snap2pay.ui.utils.isPasswordValid
 import kotlinx.android.synthetic.main.fragment_login.*

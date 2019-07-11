@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputLayout
 import com.sanmiaderibigbe.snap2pay.R
-import com.sanmiaderibigbe.snap2pay.repo.Status
+import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
 import com.sanmiaderibigbe.snap2pay.ui.utils.*
 import kotlinx.android.synthetic.main.fragment_registrationbank.*

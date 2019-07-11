@@ -5,13 +5,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer
+import com.sanmiaderibigbe.snap2pay.api.VisionImage
 import com.sanmiaderibigbe.snap2pay.repo.FirebaseRepository
+import com.sanmiaderibigbe.snap2pay.repo.PaystackRepository
 import com.sanmiaderibigbe.snap2pay.repo.TextRecognitionRepository
-import com.sanmiaderibigbe.snap2pay.repo.VisionImage
 import com.sanmiaderibigbe.snap2pay.ui.home.HomeViewModel
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationBankViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalViewModel
+import com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -32,11 +34,15 @@ val appModule = module {
 
     single<TextRecognitionRepository> { TextRecognitionRepository(androidContext() as Application, get(), get()) }
 
+    single<PaystackRepository> { PaystackRepository() }
+
     viewModel { LoginViewModel(get()) }
     viewModel { RegistrationPersonalViewModel() }
 
     viewModel { RegistrationBankViewModel(get()) }
 
     viewModel { HomeViewModel(androidContext() as Application, get()) }
+
+    viewModel { TransactionViewModel(get(), get()) }
 
 }

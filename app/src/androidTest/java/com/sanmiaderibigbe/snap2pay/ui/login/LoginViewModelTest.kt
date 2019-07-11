@@ -2,7 +2,7 @@ package com.sanmiaderibigbe.snap2pay.ui.login
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.jraska.livedata.test
-import com.sanmiaderibigbe.snap2pay.repo.Status
+import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel.AuthenticationState
 import org.junit.Rule
 import org.junit.Test

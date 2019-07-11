@@ -64,5 +64,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
 
+    //paystack
+    implementation 'co.paystack.android:paystack:3.0.10'
+
 
 }
