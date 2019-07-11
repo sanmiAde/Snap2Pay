@@ -1,5 +1,6 @@
 package com.sanmiaderibigbe.snap2pay.ui.transaction
 
+import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import co.paystack.android.model.Charge
 import com.sanmiaderibigbe.snap2pay.api.PaystackTransactionResource
 import com.sanmiaderibigbe.snap2pay.api.Resource
+import com.sanmiaderibigbe.snap2pay.model.Transaction
 import com.sanmiaderibigbe.snap2pay.model.User
 import com.sanmiaderibigbe.snap2pay.repo.FirebaseRepository
 import com.sanmiaderibigbe.snap2pay.repo.PaystackRepository
@@ -20,12 +22,20 @@ class TransactionViewModel(
 
     private val transactionStateLiveData = MutableLiveData<PaystackTransactionResource>()
     private val userStateLiveData = MutableLiveData<Resource<User>>()
+    private val TAG = "transactionViewModel"
 
     fun performTransaction(activityRef: WeakReference<FragmentActivity>, charge: Charge) {
         transactionStateLiveData.value = PaystackTransactionResource.loading()
         paystackRepository.initPaystackTransaction(activityRef, charge).subscribeBy(
             onNext = { it -> updateTransactionState(it) },
             onError = { it -> updateErrorState(it) })
+    }
+
+    fun uploadTransactionState(transaction: Transaction) {
+        firebaseRepository.uploadTransactionData(transaction).subscribeBy(
+            onComplete = { Log.d(TAG, "Completed") },
+            onError = { throwable -> Log.d(TAG, "$throwable") }
+        )
     }
 
     private fun updateErrorState(it: Throwable) {

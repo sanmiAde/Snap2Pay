@@ -16,10 +16,12 @@ import co.paystack.android.model.Card
 import co.paystack.android.model.Charge
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.PaystackTransactionResource
+import com.sanmiaderibigbe.snap2pay.model.Transaction
 import com.sanmiaderibigbe.snap2pay.ui.utils.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
+import java.util.*
 
 
 /**
@@ -84,6 +86,14 @@ class TransactionFragment : Fragment() {
                         when (transactionResource.status) {
                             PaystackTransactionResource.Status.SUCCESS -> {
                                 Toast.makeText(activity, "Transaction successful.", Toast.LENGTH_SHORT).show()
+                                val transaction: Transaction = Transaction(
+                                    transactionResource.data?.reference!!,
+                                    amountCharged.toString(),
+                                    productDescription.toString(),
+                                    "True",
+                                    Date().toString()
+                                )
+                                viewModel.uploadTransactionState(transaction)
                             }
                             PaystackTransactionResource.Status.ERROR -> {
                                 if (transactionResource.error != null) {
@@ -92,6 +102,15 @@ class TransactionFragment : Fragment() {
                                         "${transactionResource.error.localizedMessage}",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    val transaction: Transaction = Transaction(
+                                        transactionResource.data?.reference!!,
+                                        amountCharged.toString(),
+                                        productDescription.toString(),
+                                        "False",
+                                        Date().toString()
+                                    )
+                                    viewModel.uploadTransactionState(transaction)
+
                                 }
                             }
                             PaystackTransactionResource.Status.BEFORE_VALIDATE -> {
@@ -160,8 +179,6 @@ class TransactionFragment : Fragment() {
             isCustomerEmailValid -> txt_input_customer_email.error = null
             else -> txt_input_customer_email.error = getString(R.string.email_error)
         }
-
-
 
         when {
             isCCVValid -> txt_input_ccv.error = null

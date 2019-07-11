@@ -4,6 +4,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import com.sanmiaderibigbe.snap2pay.model.Transaction
 import com.sanmiaderibigbe.snap2pay.model.User
 import durdinapps.rxfirebase2.RxFirebaseAuth
 import durdinapps.rxfirebase2.RxFirebaseDatabase
@@ -35,6 +36,14 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         )
     }
 
+    fun uploadTransactionData(transaction: Transaction): Completable {
+        return RxFirebaseDatabase.setValue(
+            firebaseDatabase.getReference(USER_PATH).child(getCurrentUser()?.uid!!).child(
+                TRANSACTION_PATH
+            ), transaction
+        )
+    }
+
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
     }
@@ -63,5 +72,6 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
 
     companion object {
         private const val USER_PATH = "users"
+        private const val TRANSACTION_PATH = "transactions"
     }
 }
