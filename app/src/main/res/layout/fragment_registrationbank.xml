@@ -12,18 +12,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/txt_input_name_on_account"
                 android:hint="Name on Account" app:errorEnabled="true"
-                android:layout_marginEnd="16dp" android:layout_marginStart="16dp">
+                android:layout_marginEnd="16dp" android:layout_marginStart="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/txt_input_account_number"
                 android:hint="Account Number" app:errorEnabled="true"
-                android:layout_marginStart="16dp" android:layout_marginEnd="16dp">
+                android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -35,7 +38,8 @@
                 android:layout_height="match_parent" android:id="@+id/txt_input_bvn" android:hint="BVN"
                 app:errorEnabled="true"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -46,7 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/txt_input_bank_name" android:hint="Bank Name"
                 app:errorEnabled="true" android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -56,7 +61,8 @@
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/spinner_account_type"
-                android:layout_margin="16dp"/>
+                android:layout_margin="16dp"
+                style="@android:style/TextAppearance.Material.Widget.TextView.SpinnerItem"/>
         <Button
                 android:text="@string/register"
                 android:layout_width="match_parent"

@@ -52,5 +52,11 @@
         <argument android:name="atmCardNumber" app:argType="string" android:defaultValue='""'/>
     </fragment>
     <fragment android:id="@+id/profileFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.profile.ProfileFragment"
-              android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
+              android:label="My Profile" tools:layout="@layout/fragment_profile">
+        <action android:id="@+id/action_profileFragment_to_unauthenticatedFragment"
+                app:destination="@id/unauthenticatedFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" app:popUpToInclusive="true"
+                app:popUpTo="@+id/homeFragment"/>
+    </fragment>
 </navigation>

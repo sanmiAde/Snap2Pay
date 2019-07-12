@@ -4,7 +4,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.transaction.TransactionFragment"
-            android:id="@+id/frameLayout5">
+            android:id="@+id/frameLayout5" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                   android:orientation="vertical">
@@ -14,7 +14,9 @@
                 android:id="@+id/txt_input_amount_charged"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp" android:hint="Amount  Charged">
+                android:layout_marginTop="16dp" android:hint="Amount  Charged"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -27,7 +29,8 @@
                 android:layout_marginTop="8dp"
                 android:id="@+id/txt_product_description" android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:hint="Product Description">
+                android:hint="Product Description"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -39,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:id="@+id/txt_input_customer_email" android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" android:hint="Customer email">
+                android:layout_marginEnd="16dp" android:hint="Customer email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -52,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_input_card_number" android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:hint="Card Number" android:layout_marginTop="8dp">
+                android:hint="Card Number" android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -67,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_input_expirary_month" android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:hint="Month" android:layout_marginTop="8dp" android:layout_weight="1">
+                    android:hint="Month" android:layout_marginTop="8dp" android:layout_weight="1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -80,7 +86,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_input_expirary_day" android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:hint="Year" android:layout_marginTop="8dp" android:layout_weight="1">
+                    android:hint="Year" android:layout_marginTop="8dp" android:layout_weight="1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -93,7 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_input_ccv" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-                    android:hint="CCV" android:layout_marginTop="8dp" android:layout_weight="1">
+                    android:hint="CCV" android:layout_marginTop="8dp" android:layout_weight="1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -104,7 +112,7 @@
 
 
         <Button
-                android:text="Button"
+                android:text="ENTER"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_continue" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"

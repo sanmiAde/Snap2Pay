@@ -39,4 +39,10 @@
     <string name="date_error">Date not valid</string>
     <string name="month_error">Month not valid</string>
     <string name="card_number_error">Card number is not valid.</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="settings">Settings</string>
+    <string name="transaction_hist">Transaction History</string>
+    <string name="log_out">Log Out</string>
+    <string name="enter">ENTER</string>
 </resources>

@@ -14,7 +14,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent" android:id="@+id/txt_input_email"
-            app:layout_constraintHorizontal_bias="1.0" app:errorEnabled="true" android:hint="@string/email">
+            app:layout_constraintHorizontal_bias="1.0" app:errorEnabled="true" android:hint="@string/email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:layout_marginStart="16dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/txt_input_email" android:id="@+id/text_input_password"
-            android:hint="@string/password" app:passwordToggleEnabled="true">
+            android:hint="@string/password" app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
