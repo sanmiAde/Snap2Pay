@@ -16,8 +16,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_input_full_name" app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:hint="Full Name" app:errorEnabled="true">
 
@@ -29,10 +29,10 @@
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/txt_input_email"
-                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/txt_input_full_name"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_full_name"
                     android:hint="Email Address" app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -44,8 +44,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_input_mobile_number" app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" android:layout_marginTop="0dp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_input_email" android:hint="Mobile Number"
                     app:errorEnabled="true">
 
@@ -58,9 +58,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="8dp" android:id="@+id/txt_input_password"
-                    app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_input_mobile_number" android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp" android:id="@+id/txt_input_password"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_mobile_number"
+                    android:layout_marginEnd="16dp"
                     android:hint="@string/password" app:errorEnabled="true"
                     app:passwordToggleEnabled="true">
 
@@ -72,9 +73,9 @@
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/txt_input_verify_password" android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/txt_input_verify_password"
                     app:layout_constraintTop_toBottomOf="@+id/txt_input_password" android:hint="Verify Password"
                     app:errorEnabled="true" app:passwordToggleEnabled="true">
 
@@ -88,8 +89,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_continue" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
                     app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="8dp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_input_verify_password"/>
             <TextView
@@ -105,8 +106,8 @@
                     android:text="@string/reg_with_google"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:id="@+id/button3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
                     app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView6"/>
             android:orientation="vertical"/>

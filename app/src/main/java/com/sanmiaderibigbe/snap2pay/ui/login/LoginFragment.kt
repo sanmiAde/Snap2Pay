@@ -1,11 +1,11 @@
 package com.sanmiaderibigbe.snap2pay.ui.login
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +15,7 @@ import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.utils.isEmailValid
 import com.sanmiaderibigbe.snap2pay.ui.utils.isPasswordValid
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +33,7 @@ class LoginFragment : Fragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
     private lateinit var navController: NavController
-    private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +52,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
-        progressBar = view.findViewById(R.id.progressBar)
+        progressBar = ProgressDialog(activity)
 
         btn_login.setOnClickListener {
 
@@ -99,7 +100,8 @@ class LoginFragment : Fragment() {
                 Status.ERROR -> {
                     stopLoadingDialog()
                     if (it.message != null) {
-                        Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+
+                        Toasty.error(context!!, it.message, Toast.LENGTH_SHORT, true).show()
                     }
                 }
                 Status.LOADED -> {
@@ -115,13 +117,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun initLoadingDialog() {
-        progressBar.visibility = View.VISIBLE
-        btn_login.text = ""
+
+        progressBar.setTitle("Login in...")
+        progressBar.show()
+
     }
 
     private fun stopLoadingDialog() {
-        progressBar.visibility = View.INVISIBLE
-        btn_login.setText(R.string.login)
+        progressBar.cancel()
 
     }
 }

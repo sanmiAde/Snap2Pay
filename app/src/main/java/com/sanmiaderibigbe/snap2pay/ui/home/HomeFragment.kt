@@ -3,6 +3,7 @@ package com.sanmiaderibigbe.snap2pay.ui.home
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -20,6 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
@@ -36,6 +38,7 @@ class HomeFragment : Fragment() {
     private lateinit var fileName: String
     private val loginViewModel by viewModel<LoginViewModel>()
     private val viewModel by viewModel<HomeViewModel>()
+    private lateinit var progressBar: ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +52,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController()
-
+        progressBar = ProgressDialog(activity)
         getAuthenticationState(navController)
 
         initCardScanner()
@@ -88,7 +91,7 @@ class HomeFragment : Fragment() {
             }
 
         } else {
-            Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
+
         }
     }
 
@@ -104,7 +107,8 @@ class HomeFragment : Fragment() {
 
                 } else {
 
-                    Toast.makeText(activity, getString(R.string.camera_permision_error), Toast.LENGTH_SHORT).show()
+                    Toasty.error(context!!, getString(R.string.camera_permision_error), Toast.LENGTH_SHORT, true).show()
+
                 }
                 return
             }
@@ -130,7 +134,8 @@ class HomeFragment : Fragment() {
                 viewModel.getProcessedTextResource().observe(viewLifecycleOwner, Observer {
                     when (it.status) {
                         Status.SUCCESS -> {
-                            Toast.makeText(activity, "${it.data}", Toast.LENGTH_SHORT).show()
+                            stopLoadingDialog()
+                            Toasty.error(context!!, it.data.toString(), Toast.LENGTH_SHORT, true).show()
                             findNavController().navigate(
                                 HomeFragmentDirections
                                     .actionHomeFragmentToTransactionFragment()
@@ -138,10 +143,12 @@ class HomeFragment : Fragment() {
                             )
                         }
                         Status.LOADING -> {
+                            initLoadingDialog()
                         }
                         Status.ERROR -> {
+                            stopLoadingDialog()
                             if (it.data.isNullOrEmpty()) {
-                                Toast.makeText(activity, "${it.message}", Toast.LENGTH_SHORT).show()
+                                Toasty.error(context!!, it.message.toString(), Toast.LENGTH_SHORT, true).show()
                             }
                         }
                         Status.LOADED -> {
@@ -175,6 +182,17 @@ class HomeFragment : Fragment() {
         } else {
             ic_card_camera.visibility = View.VISIBLE
         }
+    }
+
+    private fun initLoadingDialog() {
+        progressBar.setTitle("Processing...")
+        progressBar.show()
+
+    }
+
+    private fun stopLoadingDialog() {
+        progressBar.cancel()
+
     }
 
     private fun initTakePictureIntent() {

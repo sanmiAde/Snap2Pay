@@ -29,6 +29,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu_bottom_nav"
             app:menu="@menu/menu_main_bottom_nav"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="unlabeled"/>
 
 </LinearLayout>

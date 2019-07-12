@@ -69,4 +69,8 @@ class TransactionViewModel(
         return userStateLiveData
     }
 
+    fun isEmailVerified(): Boolean? {
+        return firebaseRepository.isEmailVerified()
+    }
+
 }

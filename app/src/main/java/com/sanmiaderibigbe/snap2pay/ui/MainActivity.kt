@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> showBottomNav()
 
                 R.id.transactionFragment -> showBottomNav()
+                R.id.profileFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

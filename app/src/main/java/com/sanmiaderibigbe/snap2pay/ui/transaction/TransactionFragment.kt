@@ -1,6 +1,7 @@
 package com.sanmiaderibigbe.snap2pay.ui.transaction
 
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.PaystackTransactionResource
 import com.sanmiaderibigbe.snap2pay.model.Transaction
 import com.sanmiaderibigbe.snap2pay.ui.utils.*
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
@@ -33,6 +35,7 @@ class TransactionFragment : Fragment() {
     private val args: TransactionFragmentArgs by navArgs()
     private lateinit var navController: NavController
     private val viewModel by viewModel<TransactionViewModel>()
+    private lateinit var progressBar: ProgressDialog
 
 
     override fun onCreateView(
@@ -47,6 +50,9 @@ class TransactionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+        progressBar = ProgressDialog(activity)
+
+        initEmailVerificationCheck()
 
         btn_continue.setOnClickListener {
             val amountCharged = txt_input_amount_charged.editText?.text
@@ -85,7 +91,8 @@ class TransactionFragment : Fragment() {
 
                         when (transactionResource.status) {
                             PaystackTransactionResource.Status.SUCCESS -> {
-                                Toast.makeText(activity, "Transaction successful.", Toast.LENGTH_SHORT).show()
+                                stopLoadingDialog()
+                                Toasty.success(context!!, "Transaction successful.", Toast.LENGTH_SHORT, true).show()
                                 val transaction: Transaction = Transaction(
                                     transactionResource.data?.reference!!,
                                     amountCharged.toString(),
@@ -96,11 +103,13 @@ class TransactionFragment : Fragment() {
                                 viewModel.uploadTransactionState(transaction)
                             }
                             PaystackTransactionResource.Status.ERROR -> {
+                                stopLoadingDialog()
                                 if (transactionResource.error != null) {
-                                    Toast.makeText(
-                                        activity,
-                                        "${transactionResource.error.localizedMessage}",
-                                        Toast.LENGTH_SHORT
+                                    Toasty.error(
+                                        context!!,
+                                        transactionResource.error.localizedMessage.toString(),
+                                        Toast.LENGTH_SHORT,
+                                        true
                                     ).show()
                                     val transaction: Transaction = Transaction(
                                         transactionResource.data?.reference!!,
@@ -116,6 +125,7 @@ class TransactionFragment : Fragment() {
                             PaystackTransactionResource.Status.BEFORE_VALIDATE -> {
                             }
                             PaystackTransactionResource.Status.LOADING -> {
+                                initLoadingDialog()
                             }
                         }
                     })
@@ -143,6 +153,27 @@ class TransactionFragment : Fragment() {
         charge.putMetadata("Product Description", productDescription.toString())
 
         viewModel.performTransaction(WeakReference(requireActivity()), charge)
+    }
+
+    private fun initEmailVerificationCheck() {
+        if (!viewModel.isEmailVerified()!!) {
+            btn_continue.visibility = View.GONE
+            Toast.makeText(activity, getString(R.string.verification_error), Toast.LENGTH_SHORT).show()
+        } else {
+            btn_continue.visibility = View.VISIBLE
+        }
+    }
+
+    private fun initLoadingDialog() {
+
+        progressBar.setTitle("Login in...")
+        progressBar.show()
+
+    }
+
+    private fun stopLoadingDialog() {
+        progressBar.cancel()
+
     }
 
     private fun validateInput(

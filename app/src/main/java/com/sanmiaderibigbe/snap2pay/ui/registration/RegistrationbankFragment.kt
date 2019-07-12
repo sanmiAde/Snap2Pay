@@ -1,6 +1,7 @@
 package com.sanmiaderibigbe.snap2pay.ui.registration
 
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
 import com.sanmiaderibigbe.snap2pay.ui.utils.*
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_registrationbank.*
 import org.koin.android.ext.android.inject
 
@@ -31,6 +33,7 @@ class RegistrationbankFragment : Fragment() {
     private val sharedViewModel by inject<RegistrationPersonalViewModel>()
     private val viewModel by inject<RegistrationBankViewModel>()
     private val args: RegistrationbankFragmentArgs by navArgs()
+    private lateinit var progressBar: ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +48,7 @@ class RegistrationbankFragment : Fragment() {
 
         val spinner = initSpinner()
         navController = findNavController()
-
+        progressBar = ProgressDialog(activity)
 
         btn_register.setOnClickListener {
             val accountName = txt_input_name_on_account
@@ -65,15 +68,19 @@ class RegistrationbankFragment : Fragment() {
                         Observer {
 
                             when(it.status) {
-                                Status.LOADING -> Toast.makeText(activity, "Loading", Toast.LENGTH_SHORT).show()
+                                Status.LOADING -> {
+                                    initLoadingDialog()
+                                }
                                 Status.ERROR -> {
+                                    stopLoadingDialog()
                                     if (it.message != null) {
-                                        Toast.makeText(activity, "${it.message}", Toast.LENGTH_SHORT).show()
+                                        Toasty.error(context!!, it.message, Toast.LENGTH_SHORT, true).show()
                                     }
                                 }
                                 Status.LOADED -> {
                                 }
                                 Status.SUCCESS -> {
+                                    stopLoadingDialog()
                                     if (it.data == true) {
                                         navController.navigate(R.id.homeFragment)
                                     }
@@ -88,7 +95,6 @@ class RegistrationbankFragment : Fragment() {
     }
 
     private fun initSpinner(): Spinner {
-
         return BankaccountSpinnerAdapter.initAdapter(context!!, spinner_account_type)
     }
 
@@ -142,6 +148,15 @@ class RegistrationbankFragment : Fragment() {
         }
 
         return isAccountNumberValid && isBVNvalid && isBankAccount && isNameValid
+    }
+
+    private fun initLoadingDialog() {
+        progressBar.setTitle("Signing up...")
+        progressBar.show()
+    }
+
+    private fun stopLoadingDialog() {
+        progressBar.cancel()
     }
 
 
