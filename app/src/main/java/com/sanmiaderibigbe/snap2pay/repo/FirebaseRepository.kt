@@ -12,6 +12,13 @@ import durdinapps.rxfirebase2.RxFirebaseUser
 import io.reactivex.Completable
 import io.reactivex.Maybe
 
+/***
+ * Firebase repositoru class handles all transactions with firebase.
+ * @param firebaseAuth Firbase Authentication object.
+ * @param firebaseDatabase Firebase Database object.
+ *
+ * @author OLuwasanm Aderibigbe
+ */
 class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val firebaseDatabase: FirebaseDatabase) {
 
 
@@ -82,9 +89,19 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
 
     }
 
+    /***
+     * Sends email verification to user email after user accoount creation.
+     * @return completable observable.
+     */
+
     fun sendEmailVerification(): Completable {
         return RxFirebaseUser.sendEmailVerification(getCurrentUser()!!)
     }
+
+    /***
+     * Get user data from firebase.
+     * @return Maybe observable.
+     */
 
     fun getUserData(): Maybe<User> {
         return RxFirebaseDatabase.observeSingleValueEvent(
@@ -92,6 +109,10 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
             User::class.java
         )
     }
+
+    /***
+     * Sign out user
+     */
 
     fun signOut() {
         firebaseAuth.signOut()

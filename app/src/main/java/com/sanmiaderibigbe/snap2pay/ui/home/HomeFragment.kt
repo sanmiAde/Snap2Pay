@@ -178,7 +178,7 @@ class HomeFragment : Fragment() {
     private fun initEmailVerificationCheck() {
         if (!loginViewModel.isEmailVerified()!!) {
             ic_card_camera.visibility = View.GONE
-            Toast.makeText(activity, getString(R.string.verification_error), Toast.LENGTH_SHORT).show()
+            Toasty.error(context!!, getString(R.string.verification_error), Toast.LENGTH_SHORT, true).show()
         } else {
             ic_card_camera.visibility = View.VISIBLE
         }
@@ -205,7 +205,7 @@ class HomeFragment : Fragment() {
                     imagePath = file?.absolutePath!!
                     fileName = file?.nameWithoutExtension
                 } catch (ex: IOException) {
-                    Toast.makeText(activity, "${ex.message}", Toast.LENGTH_SHORT).show()
+                    Toasty.error(context!!, ex.message.toString(), Toast.LENGTH_SHORT, true).show()
                 }
 
                 if (file != null) {

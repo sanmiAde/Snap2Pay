@@ -24,6 +24,11 @@ class TransactionViewModel(
     private val userStateLiveData = MutableLiveData<Resource<User>>()
     private val TAG = "transactionViewModel"
 
+    /***
+     * make new paystack transaction
+     * @param activityRef weak reference is passed here.
+     * @param charge newly created charge.
+     */
     fun performTransaction(activityRef: WeakReference<FragmentActivity>, charge: Charge) {
         transactionStateLiveData.value = PaystackTransactionResource.loading()
         paystackRepository.initPaystackTransaction(activityRef, charge).subscribeBy(
@@ -31,6 +36,9 @@ class TransactionViewModel(
             onError = { it -> updateErrorState(it) })
     }
 
+    /***
+     * upload transaction to firebase after transaction completion.
+     */
     fun uploadTransactionState(transaction: Transaction) {
         firebaseRepository.uploadTransactionData(transaction).subscribeBy(
             onComplete = { Log.d(TAG, "Completed") },
@@ -57,6 +65,10 @@ class TransactionViewModel(
         return userStateLiveData
     }
 
+    /***
+     * gets if emails is verified
+     * @return is email verified.
+     */
     fun isEmailVerified(): Boolean? {
         return firebaseRepository.isEmailVerified()
     }

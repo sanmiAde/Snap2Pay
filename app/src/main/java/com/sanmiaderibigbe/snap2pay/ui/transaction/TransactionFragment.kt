@@ -158,7 +158,7 @@ class TransactionFragment : Fragment() {
     private fun initEmailVerificationCheck() {
         if (!viewModel.isEmailVerified()!!) {
             btn_continue.visibility = View.GONE
-            Toast.makeText(activity, getString(R.string.verification_error), Toast.LENGTH_SHORT).show()
+            Toasty.error(context!!, getString(R.string.verification_error), Toast.LENGTH_SHORT, true).show()
         } else {
             btn_continue.visibility = View.VISIBLE
         }

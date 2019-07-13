@@ -4,7 +4,15 @@ import android.os.Parcel
 import android.os.Parcelable
 
 
-
+/***
+ * @param fullName full name of user
+ * @param emailAddress email address of user.
+ * @param phoneNumber phone number of user.
+ * @param nameOnAccount name of user.
+ * @param bvn bvn of user
+ * @param bankAccount bank account number of user.
+ * @param accountType account type
+ */
 data class User(
     val fullName: String = "",
     val emailAddress: String = "",

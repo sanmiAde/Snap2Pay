@@ -12,6 +12,11 @@ class RegistrationBankViewModel(private val firebaseRepository: FirebaseReposito
 
     private val registrationSuccessFull = MutableLiveData<Resource<Boolean>>()
 
+    /***
+     * Register user to snap 2 pay.
+     * @param user Created user with details from form.
+     * @param password user password.
+     */
     fun registerUser(user: User, password: String) {
         registrationSuccessFull.value = Resource.loading(false)
 
@@ -40,6 +45,10 @@ class RegistrationBankViewModel(private val firebaseRepository: FirebaseReposito
 
     }
 
+    /***
+     * get user registration state
+     * @return live data containing if user was registered.
+     */
     fun getRegisterResource(): LiveData<Resource<Boolean>> {
         return registrationSuccessFull
     }

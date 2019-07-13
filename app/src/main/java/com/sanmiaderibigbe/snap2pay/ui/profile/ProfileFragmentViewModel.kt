@@ -12,6 +12,9 @@ class ProfileFragmentViewModel(private val firebaseRepository: FirebaseRepositor
 
     private val userStateLiveData = MutableLiveData<Resource<User>>()
 
+    /***
+     * get user data
+     */
     fun getUserData() {
         userStateLiveData.value = Resource.loading(null)
         firebaseRepository.getUserData().subscribeBy(

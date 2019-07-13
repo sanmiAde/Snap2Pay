@@ -96,10 +96,18 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
 
     }
 
+    /***
+     * get Text from atm image file.
+     * @return live data containing atm card number.
+     */
     fun getProcessedTextResource(): LiveData<Resource<String?>> {
         return textRecognitionResource
     }
 
+    /***
+     * clean up image file after text extraction.
+     * @param fileName image file name.
+     */
     fun cleanUpImage(fileName: String) {
         textRecognitionRepository.deleteImage(fileName)
     }
