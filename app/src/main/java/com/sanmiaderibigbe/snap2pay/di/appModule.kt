@@ -11,6 +11,7 @@ import com.sanmiaderibigbe.snap2pay.repo.PaystackRepository
 import com.sanmiaderibigbe.snap2pay.repo.TextRecognitionRepository
 import com.sanmiaderibigbe.snap2pay.ui.home.HomeViewModel
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
+import com.sanmiaderibigbe.snap2pay.ui.profile.ProfileFragmentViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationBankViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalViewModel
 import com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionViewModel
@@ -44,5 +45,7 @@ val appModule = module {
     viewModel { HomeViewModel(androidContext() as Application, get()) }
 
     viewModel { TransactionViewModel(get(), get()) }
+
+    viewModel { ProfileFragmentViewModel(get()) }
 
 }

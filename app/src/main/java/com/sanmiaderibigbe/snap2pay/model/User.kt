@@ -6,9 +6,9 @@ import android.os.Parcelable
 
 
 data class User(
-    val fullName : String,
-    val emailAddress:  String,
-    val phoneNumber: String,
+    val fullName: String = "",
+    val emailAddress: String = "",
+    val phoneNumber: String = "",
     val nameOnAccount : String = "",
     val bvn : String= "",
     val bankAccount : String = "",

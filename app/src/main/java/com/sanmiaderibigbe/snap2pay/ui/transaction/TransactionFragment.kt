@@ -166,7 +166,7 @@ class TransactionFragment : Fragment() {
 
     private fun initLoadingDialog() {
 
-        progressBar.setTitle("Login in...")
+        progressBar.setTitle("Processing Transaction...")
         progressBar.show()
 
     }

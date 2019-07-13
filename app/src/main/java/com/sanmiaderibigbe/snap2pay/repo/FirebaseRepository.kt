@@ -38,9 +38,8 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
 
     fun uploadTransactionData(transaction: Transaction): Completable {
         return RxFirebaseDatabase.setValue(
-            firebaseDatabase.getReference(USER_PATH).child(getCurrentUser()?.uid!!).child(
-                TRANSACTION_PATH
-            ), transaction
+            firebaseDatabase.getReference(TRANSACTION_PATH).child(getCurrentUser()?.uid!!).child(transaction.transactionId),
+            transaction
         )
     }
 

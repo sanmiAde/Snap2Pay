@@ -47,18 +47,6 @@ class TransactionViewModel(
         transactionStateLiveData.value = it
     }
 
-    fun getUserData() {
-        firebaseRepository.getUserData().subscribeBy(
-            onSuccess = { it -> updateUserResource(it) },
-            onError = { it -> updateUserErrorState(it) }
-        )
-    }
-
-    private fun updateUserErrorState(throwable: Throwable): MutableLiveData<Resource<User>> {
-        userStateLiveData.value = Resource.error(throwable.message, null)
-        return userStateLiveData
-
-    }
 
     fun getTransactionState(): LiveData<PaystackTransactionResource> {
         return transactionStateLiveData
