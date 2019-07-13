@@ -65,7 +65,7 @@
     </fragment>
     <fragment android:id="@+id/updatePersonalDetailsFragment"
               android:name="com.sanmiaderibigbe.snap2pay.ui.updatePersonalDetails.UpdatePersonalDetailsFragment"
-              android:label="fragment_update_personal_details" tools:layout="@layout/fragment_update_personal_details">
+              android:label="Personal Details" tools:layout="@layout/fragment_update_personal_details">
         <argument android:name="user" app:argType="com.sanmiaderibigbe.snap2pay.model.User" app:nullable="true"/>
     </fragment>
 </navigation>

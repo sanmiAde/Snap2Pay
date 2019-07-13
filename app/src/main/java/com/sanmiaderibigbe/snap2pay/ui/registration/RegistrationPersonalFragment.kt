@@ -14,6 +14,7 @@ import com.sanmiaderibigbe.snap2pay.ui.utils.FormValidation
 import com.sanmiaderibigbe.snap2pay.ui.utils.getString
 import kotlinx.android.synthetic.main.fragment_registration_personal.*
 import kotlinx.android.synthetic.main.personal_detail_form.*
+import kotlinx.android.synthetic.main.update_personal_detail_form.*
 import org.koin.android.ext.android.inject
 
 
