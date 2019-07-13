@@ -13,11 +13,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.textfield.TextInputLayout
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
-import com.sanmiaderibigbe.snap2pay.ui.utils.*
+import com.sanmiaderibigbe.snap2pay.ui.utils.FormValidation
+import com.sanmiaderibigbe.snap2pay.ui.utils.getString
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_registrationbank.*
 import org.koin.android.ext.android.inject
@@ -56,7 +56,8 @@ class RegistrationbankFragment : Fragment() {
             val bvn = txt_input_bvn
             val bankAccount = txt_input_bank_name
 
-            val validatonResult = validateInput(accountName, accountNumber, bvn, bankAccount)
+            val validatonResult =
+                FormValidation.validateBankInput(context!!, accountName, accountNumber, bvn, bankAccount)
 
             when {
                 validatonResult -> {
@@ -98,57 +99,6 @@ class RegistrationbankFragment : Fragment() {
         return BankaccountSpinnerAdapter.initAdapter(context!!, spinner_account_type)
     }
 
-    private fun validateInput(
-        nameOnAccount: TextInputLayout,
-        accountNumber: TextInputLayout,
-        BVN: TextInputLayout,
-        bankAccount: TextInputLayout
-    ): Boolean {
-
-        val isNameValid = isTextNotBlank(nameOnAccount.getData())
-        val isAccountNumberValid = isBankNumberValid(accountNumber.getData())
-        val isBVNvalid = isBVNNumberValid(BVN.getData())
-        val isBankAccount = isTextNotBlank(bankAccount.getData())
-
-
-
-        when {
-            isNameValid -> {
-                nameOnAccount.error = null
-            }
-            else -> {
-                nameOnAccount.error = getString(R.string.name_error)
-            }
-        }
-
-        when {
-            isAccountNumberValid -> {
-                accountNumber.error = null
-            }
-            else -> {
-                accountNumber.error = getString(R.string.account_number_error)
-            }
-        }
-
-        when {
-            isBVNvalid -> {
-            }
-            else -> {
-                BVN.error = getString(R.string.bvn_error)
-            }
-        }
-
-        when {
-            isBankAccount -> {
-                bankAccount.error = null
-            }
-            else -> {
-                bankAccount.error = getString(R.string.bank_account_error)
-            }
-        }
-
-        return isAccountNumberValid && isBVNvalid && isBankAccount && isNameValid
-    }
 
     private fun initLoadingDialog() {
         progressBar.setTitle("Signing up...")

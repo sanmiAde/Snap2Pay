@@ -16,7 +16,7 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
 
 
     /***
-     * authenticate user
+     * Login user
      * @param email email of user
      * @param password password of user
      *
@@ -26,16 +26,36 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         return RxFirebaseAuth.signInWithEmailAndPassword(firebaseAuth, email, password)
     }
 
+    /***
+     * Creates new user
+     * @param email Email of user
+     * @param password User password
+     *
+     * @return Maybe observable containing authresult
+     */
     fun registerUser(email : String, password : String ): Maybe<AuthResult> {
         return RxFirebaseAuth.createUserWithEmailAndPassword(firebaseAuth, email, password )
     }
 
+    /***
+     *
+     * uploads user sign up data after creating new user account.
+     * @param user Created user containing user detail.
+     *
+     * @return completable observable
+     */
     fun uploadUserData(user: User) : Completable {
         return  RxFirebaseDatabase.setValue(
             firebaseDatabase.getReference(USER_PATH).child(getCurrentUser()?.uid!!), user
         )
     }
 
+    /***
+     * Uploads each transaction taken by the user.
+     * @param transaction user transaction
+     *
+     * @return Completable  observable
+     */
     fun uploadTransactionData(transaction: Transaction): Completable {
         return RxFirebaseDatabase.setValue(
             firebaseDatabase.getReference(TRANSACTION_PATH).child(getCurrentUser()?.uid!!).child(transaction.transactionId),
@@ -43,10 +63,19 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         )
     }
 
+    /***
+     * Get current user if user is signed in.
+     *
+     * @return  current signed user.
+     */
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
     }
 
+    /***
+     * Checks if email has been verified. User can not user app features if email has not been verified.
+     * @return  is verified.
+     */
     fun isEmailVerified(): Boolean? {
         getCurrentUser()?.reload()
         return getCurrentUser()?.isEmailVerified

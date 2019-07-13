@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputLayout
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.model.User
-import com.sanmiaderibigbe.snap2pay.ui.utils.*
+import com.sanmiaderibigbe.snap2pay.ui.utils.FormValidation
+import com.sanmiaderibigbe.snap2pay.ui.utils.getString
 import kotlinx.android.synthetic.main.fragment_registration_personal.*
+import kotlinx.android.synthetic.main.personal_detail_form.*
 import org.koin.android.ext.android.inject
 
 
@@ -46,7 +47,14 @@ class RegistrationPersonalFragment : Fragment() {
             val password = txt_input_password
             val verifyPassword = txt_input_verify_password
 
-            val validationResult = validateInput(fullName, email, phoneNumber, password, verifyPassword)
+            val validationResult = FormValidation.validatePersonalFormInput(
+                context!!,
+                fullName,
+                email,
+                phoneNumber,
+                password,
+                verifyPassword
+            )
 
             when {
                 validationResult -> {
@@ -70,74 +78,5 @@ class RegistrationPersonalFragment : Fragment() {
 
         }
     }
-
-    private fun validateInput(
-        fullName: TextInputLayout,
-        email: TextInputLayout,
-        phoneNumber: TextInputLayout,
-        password: TextInputLayout,
-        verifyPassword: TextInputLayout
-    ): Boolean {
-
-        val isFullNameValid = isTextNotBlank(fullName.getData())
-        val isEmailValid = isEmailValid(email.getData())
-        val isPhoneNumberValid = isPhoneNumberValid(phoneNumber.getData())
-        val isPasswordValid = isPasswordValid(password.getData())
-        val isVerifyPasswordValid = isPasswordValid(verifyPassword.getData())
-        val isPasswordVerified = isPasswordVerified(password.getData(), verifyPassword.getData())
-
-
-
-        when {
-            isFullNameValid -> {
-                fullName.error = null
-            }
-            else -> fullName.error = getString(R.string.name_error)
-        }
-
-        when {
-            isEmailValid -> {
-                email.error = null
-            }
-            else -> email.error = getString(R.string.email_error)
-
-        }
-
-        when {
-            isPhoneNumberValid -> {
-                phoneNumber.error = null
-            }
-            else -> phoneNumber.error = getString(R.string.phone_number_error)
-
-        }
-
-        when {
-            isPasswordValid -> {
-                password.error = null
-            }
-            else -> password.error = getString(R.string.password_error)
-        }
-
-        when {
-            isVerifyPasswordValid -> {
-                verifyPassword.error = null
-
-                when {
-                    isPasswordVerified -> {
-                        verifyPassword.error = null
-                    }
-                    else -> {
-                        verifyPassword.error = getString(R.string.password_not_the_same_error)
-                    }
-                }
-            }
-            else -> {
-                verifyPassword.error = getString(R.string.password_error)
-            }
-        }
-
-        return isEmailValid && isFullNameValid && isPasswordValid && isVerifyPasswordValid && isPhoneNumberValid && isPasswordVerified
-    }
-
 
 }

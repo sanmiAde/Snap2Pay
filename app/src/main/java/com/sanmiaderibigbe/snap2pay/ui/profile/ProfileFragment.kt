@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.sanmiaderibigbe.snap2pay.R
 import com.sanmiaderibigbe.snap2pay.api.Status
 import com.sanmiaderibigbe.snap2pay.databinding.FragmentProfileBinding
+import com.sanmiaderibigbe.snap2pay.model.User
 import com.sanmiaderibigbe.snap2pay.ui.login.LoginViewModel
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -29,6 +30,7 @@ class ProfileFragment : Fragment() {
     private val viewModel by viewModel<ProfileFragmentViewModel>()
     private lateinit var binding: FragmentProfileBinding
     private lateinit var progressBar: ProgressDialog
+    private var user: User? = null
 
 
     override fun onCreateView(
@@ -51,6 +53,9 @@ class ProfileFragment : Fragment() {
 
         gerUserInfo()
 
+        txt_personal_details.setOnClickListener {
+            navController.navigate(ProfileFragmentDirections.actionProfileFragmentToUpdatePersonalDetailsFragment(user))
+        }
 
         txt_log_out.setOnClickListener {
             loginViewModel.signout()
@@ -79,6 +84,7 @@ class ProfileFragment : Fragment() {
                     stopLoadingDialog()
                     if (it.data != null) {
                         binding.user = it.data
+                        user = it.data
                     }
                 }
             }
