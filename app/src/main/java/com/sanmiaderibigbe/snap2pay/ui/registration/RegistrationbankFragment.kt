@@ -19,6 +19,7 @@ import com.sanmiaderibigbe.snap2pay.ui.adapter.BankaccountSpinnerAdapter
 import com.sanmiaderibigbe.snap2pay.ui.utils.FormValidation
 import com.sanmiaderibigbe.snap2pay.ui.utils.getString
 import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.bank_details_form.*
 import kotlinx.android.synthetic.main.fragment_registrationbank.*
 import org.koin.android.ext.android.inject
 
@@ -62,7 +63,13 @@ class RegistrationbankFragment : Fragment() {
             when {
                 validatonResult -> {
 
-                    val updatedUser = args.user.copy(nameOnAccount = accountName.getString(), accountNumber = accountNumber.getString(), bvn = bvn.getString(), accountType = spinner.selectedItem.toString())
+                    val updatedUser = args.user.copy(
+                        nameOnAccount = accountName.getString(),
+                        accountNumber = accountNumber.getString(),
+                        bvn = bvn.getString(),
+                        bankAccount = bankAccount.getString(),
+                        accountType = spinner.selectedItem.toString()
+                    )
 
                     viewModel.registerUser(updatedUser, args.password)
                     viewModel.getRegisterResource().observe(viewLifecycleOwner,

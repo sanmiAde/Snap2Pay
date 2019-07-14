@@ -1,5 +1,6 @@
 package com.sanmiaderibigbe.snap2pay.repo
 
+import android.app.Application
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,7 +20,11 @@ import io.reactivex.Maybe
  *
  * @author OLuwasanm Aderibigbe
  */
-class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val firebaseDatabase: FirebaseDatabase) {
+class FirebaseRepository(
+    private val application: Application,
+    private val firebaseAuth: FirebaseAuth,
+    private val firebaseDatabase: FirebaseDatabase
+) {
 
 
     /***
@@ -79,6 +84,7 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         return firebaseAuth.currentUser
     }
 
+
     /***
      * Checks if email has been verified. User can not user app features if email has not been verified.
      * @return  is verified.
@@ -113,7 +119,6 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
     /***
      * Sign out user
      */
-
     fun signOut() {
         firebaseAuth.signOut()
     }
@@ -123,4 +128,5 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth, private val fir
         private const val USER_PATH = "users"
         private const val TRANSACTION_PATH = "transactions"
     }
+
 }

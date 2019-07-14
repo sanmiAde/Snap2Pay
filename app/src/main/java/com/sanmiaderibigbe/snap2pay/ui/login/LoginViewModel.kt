@@ -61,5 +61,9 @@ class LoginViewModel(private val firebaseRepository: FirebaseRepository) : ViewM
         return firebaseRepository.isEmailVerified()
     }
 
+    fun reloadUser() {
+        firebaseRepository.getCurrentUser()?.reload()
+    }
+
 
 }

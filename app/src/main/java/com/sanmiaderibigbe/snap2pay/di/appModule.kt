@@ -15,6 +15,7 @@ import com.sanmiaderibigbe.snap2pay.ui.profile.ProfileFragmentViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationBankViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalViewModel
 import com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionViewModel
+import com.sanmiaderibigbe.snap2pay.ui.updateUserDetails.UpdateUserDetailsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,7 +29,7 @@ val appModule = module {
     single<VisionImage> { VisionImage() }
 
     single<FirebaseRepository> {
-        FirebaseRepository(get(), get())
+        FirebaseRepository(androidContext() as Application, get(), get())
     }
 
     single<FirebaseVisionTextRecognizer> { FirebaseVision.getInstance().onDeviceTextRecognizer }
@@ -47,5 +48,7 @@ val appModule = module {
     viewModel { TransactionViewModel(get(), get()) }
 
     viewModel { ProfileFragmentViewModel(get()) }
+
+    viewModel { UpdateUserDetailsViewModel(get()) }
 
 }

@@ -58,14 +58,12 @@
                 app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim" app:popUpToInclusive="true"
                 app:popUpTo="@+id/homeFragment"/>
-        <action android:id="@+id/action_profileFragment_to_updatePersonalDetailsFragment"
-                app:destination="@id/updatePersonalDetailsFragment" app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_profileFragment_to_updateUserDetailsFragment"
+                app:destination="@id/updateUserDetailsFragment"/>
     </fragment>
-    <fragment android:id="@+id/updatePersonalDetailsFragment"
-              android:name="com.sanmiaderibigbe.snap2pay.ui.updatePersonalDetails.UpdatePersonalDetailsFragment"
-              android:label="Personal Details" tools:layout="@layout/fragment_update_personal_details">
+    <fragment android:id="@+id/updateUserDetailsFragment"
+              android:name="com.sanmiaderibigbe.snap2pay.ui.updateUserDetails.UpdateUserDetailsFragment"
+              android:label="User Details" tools:layout="@layout/fragment_update_user_details">
         <argument android:name="user" app:argType="com.sanmiaderibigbe.snap2pay.model.User" app:nullable="true"/>
     </fragment>
 </navigation>

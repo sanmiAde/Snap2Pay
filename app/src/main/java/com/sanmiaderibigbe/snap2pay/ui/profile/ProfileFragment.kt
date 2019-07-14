@@ -54,7 +54,7 @@ class ProfileFragment : Fragment() {
         gerUserInfo()
 
         txt_personal_details.setOnClickListener {
-            navController.navigate(ProfileFragmentDirections.actionProfileFragmentToUpdatePersonalDetailsFragment(user))
+            navController.navigate(ProfileFragmentDirections.actionProfileFragmentToUpdateUserDetailsFragment(user))
         }
 
         txt_log_out.setOnClickListener {

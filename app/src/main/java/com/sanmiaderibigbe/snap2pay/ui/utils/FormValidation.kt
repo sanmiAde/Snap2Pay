@@ -67,38 +67,37 @@ object FormValidation {
         verifyPassword: TextInputLayout
     ): Boolean {
 
-        val isFullNameValid = isTextNotBlank(fullName.getData())
-        val isEmailValid = isEmailValid(email.getData())
-        val isPhoneNumberValid = isPhoneNumberValid(phoneNumber.getData())
+//        val isFullNameValid = isTextNotBlank(fullName.getData())
+//        val isEmailValid = isEmailValid(email.getData())
+//        val isPhoneNumberValid = isPhoneNumberValid(phoneNumber.getData())
         val isPasswordValid = isPasswordValid(password.getData())
         val isVerifyPasswordValid = isPasswordValid(verifyPassword.getData())
         val isPasswordVerified = isPasswordVerified(password.getData(), verifyPassword.getData())
 
 
-
-        when {
-            isFullNameValid -> {
-                fullName.error = null
-            }
-            else -> fullName.error = context.getString(R.string.name_error)
-        }
-
-        when {
-            isEmailValid -> {
-                email.error = null
-            }
-            else -> email.error = context.getString(R.string.email_error)
-
-        }
-
-        when {
-            isPhoneNumberValid -> {
-                phoneNumber.error = null
-            }
-            else -> phoneNumber.error = context.getString(R.string.phone_number_error)
-
-        }
-
+//        when {
+//            isFullNameValid -> {
+//                fullName.error = null
+//            }
+//            else -> fullName.error = context.getString(R.string.name_error)
+//        }
+//
+//        when {
+//            isEmailValid -> {
+//                email.error = null
+//            }
+//            else -> email.error = context.getString(R.string.email_error)
+//
+//        }
+//
+//        when {
+//            isPhoneNumberValid -> {
+//                phoneNumber.error = null
+//            }
+//            else -> phoneNumber.error = context.getString(R.string.phone_number_error)
+//
+//        }
+        val isUserPersonalInputValid = validateUserPersonalInput(context, fullName, email, phoneNumber)
         when {
             isPasswordValid -> {
                 password.error = null
@@ -124,8 +123,60 @@ object FormValidation {
             }
         }
 
-        return isEmailValid && isFullNameValid && isPasswordValid && isVerifyPasswordValid && isPhoneNumberValid && isPasswordVerified
+        return isPasswordVerified && isPasswordValid && isVerifyPasswordValid && isUserPersonalInputValid
     }
 
+    fun validateUserPersonalInput(
+        context: Context, fullName: TextInputLayout,
+        email: TextInputLayout,
+        phoneNumber: TextInputLayout
+    ): Boolean {
+        val isFullNameValid = isTextNotBlank(fullName.getData())
+        val isEmailValid = isEmailValid(email.getData())
+        val isPhoneNumberValid = isPhoneNumberValid(phoneNumber.getData())
+
+
+        when {
+            isFullNameValid -> {
+                fullName.error = null
+            }
+            else -> fullName.error = context.getString(R.string.name_error)
+        }
+
+        when {
+            isEmailValid -> {
+                email.error = null
+            }
+            else -> email.error = context.getString(R.string.email_error)
+
+        }
+
+        when {
+            isPhoneNumberValid -> {
+                phoneNumber.error = null
+            }
+            else -> phoneNumber.error = context.getString(R.string.phone_number_error)
+
+        }
+        return isFullNameValid && isEmailValid && isPhoneNumberValid
+    }
+
+    fun validatepdateUsersDetailsForm(
+        context: Context,
+        nameOnAccount: TextInputLayout,
+        accountNumber: TextInputLayout,
+        BVN: TextInputLayout,
+        bankAccount: TextInputLayout, fullName: TextInputLayout,
+        email: TextInputLayout,
+        phoneNumber: TextInputLayout
+    ): Boolean {
+        return validateUserPersonalInput(context, fullName, email, phoneNumber) && validateBankInput(
+            context,
+            nameOnAccount,
+            accountNumber,
+            BVN,
+            bankAccount
+        )
+    }
 
 }
