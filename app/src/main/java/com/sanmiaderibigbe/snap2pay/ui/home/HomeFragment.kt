@@ -139,11 +139,11 @@ class HomeFragment : Fragment() {
                     when (it.status) {
                         Status.SUCCESS -> {
                             stopLoadingDialog()
-                            Toasty.error(context!!, it.data.toString(), Toast.LENGTH_SHORT, true).show()
+                            Toasty.success(context!!, it.data.toString(), Toast.LENGTH_SHORT, true).show()
                             findNavController().navigate(
-                                HomeFragmentDirections
-                                    .actionHomeFragmentToTransactionFragment()
-                                    .setAtmCardNumber(it.data!!)
+                                HomeFragmentDirections.actionHomeFragmentToTransactionFragment2().setAtmCardNumber(
+                                    it.data!!
+                                )
                             )
                         }
                         Status.LOADING -> {

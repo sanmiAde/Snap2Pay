@@ -22,6 +22,7 @@ import com.sanmiaderibigbe.snap2pay.ui.utils.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.ext.isInt
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -52,6 +53,10 @@ class TransactionFragment : Fragment() {
         navController = findNavController()
         progressBar = ProgressDialog(activity)
 
+        val cardNumber = args.atmCardNumber
+        if (cardNumber.isInt()) {
+            txt_input_card_number.editText?.setText(cardNumber)
+        }
         initEmailVerificationCheck()
 
         btn_continue.setOnClickListener {
