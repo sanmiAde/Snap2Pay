@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.sanmiaderibigbe.snap2pay.model.Transaction
 import com.sanmiaderibigbe.snap2pay.model.User
+import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseAuth
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import durdinapps.rxfirebase2.RxFirebaseUser
@@ -114,6 +115,16 @@ class FirebaseRepository(
             firebaseDatabase.getReference(USER_PATH).child(getCurrentUser()?.uid!!),
             User::class.java
         )
+    }
+
+    fun getUserTransactions(): Maybe<MutableList<Transaction>> {
+
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            firebaseDatabase.getReference(TRANSACTION_PATH).child(
+                getCurrentUser()?.uid!!
+            ), DataSnapshotMapper.listOf(Transaction::class.java)
+        )
+
     }
 
     /***

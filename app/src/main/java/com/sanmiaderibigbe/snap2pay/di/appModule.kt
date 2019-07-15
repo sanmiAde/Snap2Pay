@@ -15,6 +15,7 @@ import com.sanmiaderibigbe.snap2pay.ui.profile.ProfileFragmentViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationBankViewModel
 import com.sanmiaderibigbe.snap2pay.ui.registration.RegistrationPersonalViewModel
 import com.sanmiaderibigbe.snap2pay.ui.transaction.TransactionViewModel
+import com.sanmiaderibigbe.snap2pay.ui.transactionslist.TransactonsViewModel
 import com.sanmiaderibigbe.snap2pay.ui.updateUserDetails.UpdateUserDetailsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -50,5 +51,7 @@ val appModule = module {
     viewModel { ProfileFragmentViewModel(get()) }
 
     viewModel { UpdateUserDetailsViewModel(get()) }
+
+    viewModel { TransactonsViewModel(get()) }
 
 }

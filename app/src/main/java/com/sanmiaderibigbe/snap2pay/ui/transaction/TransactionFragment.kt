@@ -111,14 +111,14 @@ class TransactionFragment : Fragment() {
                                         Toast.LENGTH_SHORT,
                                         true
                                     ).show()
-                                    val transaction: Transaction = Transaction(
-                                        transactionResource.data?.reference!!,
-                                        amountCharged.toString(),
-                                        productDescription.toString(),
-                                        "False",
-                                        Date().toString()
-                                    )
-                                    viewModel.uploadTransactionState(transaction)
+//                                    val transaction: Transaction = Transaction(
+//                                        transactionResource.data?.reference!!,
+//                                        amountCharged.toString(),
+//                                        productDescription.toString(),
+//                                        "False",
+//                                        Date().toString()
+//                                    )
+//                                    viewModel.uploadTransactionState(transaction)
 
                                 }
                             }

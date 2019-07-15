@@ -57,6 +57,10 @@ class ProfileFragment : Fragment() {
             navController.navigate(ProfileFragmentDirections.actionProfileFragmentToUpdateUserDetailsFragment(user))
         }
 
+        txt_transaction_history.setOnClickListener {
+            navController.navigate(ProfileFragmentDirections.actionProfileFragmentToTrasnsactionsFragment())
+        }
+
         txt_log_out.setOnClickListener {
             loginViewModel.signout()
             navController.navigate(ProfileFragmentDirections.actionProfileFragmentToUnauthenticatedFragment())

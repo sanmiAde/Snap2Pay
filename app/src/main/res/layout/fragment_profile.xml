@@ -53,7 +53,7 @@
                 android:text="@string/transaction_hist"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView11"
+                android:id="@+id/txt_transaction_history"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/imageView5"
                 android:layout_marginStart="8dp" android:textSize="18sp"
@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView11"/>
+                app:layout_constraintBottom_toBottomOf="@+id/txt_transaction_history"
+                app:layout_constraintTop_toTopOf="@+id/txt_transaction_history"/>
         <ImageView
                 android:src="@drawable/ic_logout_rounded_up"
                 android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_transaction_history" android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
