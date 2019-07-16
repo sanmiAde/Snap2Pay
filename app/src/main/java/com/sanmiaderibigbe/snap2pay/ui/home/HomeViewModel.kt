@@ -4,6 +4,7 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -67,11 +68,11 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
             run {
                 textBlock.lines.forEach { line ->
                     //Sometimes card numbers are lumped into group of fours. Thats why we check to see if there is a line with four elements here. Optimise later.
-                    run {
-                        if (line.elements.size == 4) {
-                            atmCardNumber = line.elements.joinToString("")
-                        }
-                    }
+//                    run {
+//                        if (line.elements.size == 4) {
+//                            atmCardNumber = line.elements.joinToString("")
+//                        }
+//                    }
 
                     line.elements.forEach { element ->
                         run {
@@ -87,13 +88,20 @@ class HomeViewModel(private val app: Application, private val textRecognitionRep
         }
 
         //TODO fix bug. Text recognition extract not atm  picturs and shows to the screen
-        if (atmCardNumber.isNullOrEmpty() || atmCardNumber == "null") {
+//        if (atmCardNumber.isNullOrEmpty() || atmCardNumber == "null") {
+//            textRecognitionResource.value =
+//                Resource.error(app.getString(R.string.text_extraction_error), atmCardNumber)
+//        } else {
+//            textRecognitionResource.value = Resource.success(atmCardNumber)
+//        }
+        Log.d("textRecognition", "$atmCardNumber")
+        if (!atmCardNumber?.isEmpty()!! && atmCardNumber?.isDigitsOnly()!!) {
+            textRecognitionResource.value = Resource.success(atmCardNumber)
+        } else {
             textRecognitionResource.value =
                 Resource.error(app.getString(R.string.text_extraction_error), atmCardNumber)
-        } else {
-            textRecognitionResource.value = Resource.success(atmCardNumber)
         }
-        Log.d("textRecognition", "$atmCardNumber")
+
 
     }
 

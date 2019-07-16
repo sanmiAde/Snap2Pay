@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
     private val loginViewModel by viewModel<LoginViewModel>()
     private val viewModel by viewModel<HomeViewModel>()
     private lateinit var progressBar: ProgressDialog
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,9 +52,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val navController = findNavController()
+        navController = findNavController()
         progressBar = ProgressDialog(activity)
         getAuthenticationState(navController)
+
 
         initCardScanner()
 
@@ -139,9 +141,15 @@ class HomeFragment : Fragment() {
                     when (it.status) {
                         Status.SUCCESS -> {
                             stopLoadingDialog()
-                            Toasty.success(context!!, it.data.toString(), Toast.LENGTH_SHORT, true).show()
-                            findNavController().navigate(
-                                HomeFragmentDirections.actionHomeFragmentToTransactionFragment2().setAtmCardNumber(
+
+//                            findNavController().navigate(
+////                                HomeFragmentDirections.actionHomeFragmentToTransactionFragment().setAtmCardNumber(
+////                                    it.data!!
+////                                )
+//                            )
+
+                            navController.navigate(
+                                HomeFragmentDirections.actionHomeFragmentToTransactionFragment().setAtmCardNumber(
                                     it.data!!
                                 )
                             )
@@ -153,6 +161,8 @@ class HomeFragment : Fragment() {
                             stopLoadingDialog()
                             if (it.data.isNullOrEmpty()) {
                                 Toasty.error(context!!, it.message.toString(), Toast.LENGTH_SHORT, true).show()
+                            } else {
+                                Toasty.error(context!!, "Could not extract text.", Toast.LENGTH_SHORT, true).show()
                             }
                         }
                         Status.LOADED -> {

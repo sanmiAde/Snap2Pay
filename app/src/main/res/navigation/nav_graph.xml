@@ -12,8 +12,8 @@
                 app:popExitAnim="@anim/nav_default_pop_exit_anim" app:popUpToInclusive="true"
                 app:popUpTo="@+id/homeFragment"/>
         <action android:id="@+id/action_homeFragment_to_profileFragment" app:destination="@id/profileFragment"/>
-        <action android:id="@+id/action_homeFragment_to_transactionFragment2"
-                app:destination="@id/transactionFragment"/>
+        <action android:id="@+id/action_homeFragment_to_transactionFragment" app:destination="@id/transactionFragment"
+                app:launchSingleTop="true"/>
     </fragment>
     <fragment android:id="@+id/loginFragment" android:name="com.sanmiaderibigbe.snap2pay.ui.login.LoginFragment"
               android:label="LOGIN" tools:layout="@layout/fragment_login">
